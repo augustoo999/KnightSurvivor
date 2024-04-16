@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 604717007397847369}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.07, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -161,5 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f90e635578f6845a07e6b8f53cab11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 7873210978176679572, guid: f184024cac4f50944b50edcea7e7fd74, type: 3}
   rbArrow: {fileID: 8455578596244853670}
-  speedArrow: 16
+  speedArrow: 40
