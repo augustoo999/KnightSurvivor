@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer srPlayer;
 
     [Header("Arrow Settings")]
-    private Arrow Arrow;
+    public Arrow arrow;
     public float ArrowRate;
     private float ArrowTimer;
 
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         srPlayer = GetComponent<SpriteRenderer>();
-        Arrow = GetComponent<Arrow>();
+        
     }
 
 
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         OnInput();
         SpawnArrow();
-        
+
     }
 
     private void FixedUpdate()
@@ -67,10 +67,11 @@ public class PlayerController : MonoBehaviour
     void SpawnArrow()
     {
         ArrowTimer += Time.deltaTime;
-
         if (ArrowTimer > ArrowRate)
         {
-            Instantiate(Arrow,transform.position, Quaternion.identity);
+            float angle = Mathf.Atan2(_direction.x, _direction.y) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(0, 0, angle);
+            Instantiate(arrow,transform.position, Quaternion.identity);
             ArrowTimer = 0;
         }
     }
