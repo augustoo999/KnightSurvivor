@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public GameObject Explosion;
     public Rigidbody2D rbArrow;
     public float speedArrow;
 
@@ -16,6 +17,17 @@ public class Arrow : MonoBehaviour
     {
         Vector2 direction = transform.position + transform.right * speedArrow * Time.deltaTime;
         rbArrow.MovePosition(direction);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            GameObject exp = Instantiate(Explosion, transform.position, Quaternion.identity);
+            Destroy(exp, 1f);
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 
 }
