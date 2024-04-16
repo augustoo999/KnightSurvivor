@@ -69,9 +69,9 @@ public class PlayerController : MonoBehaviour
         ArrowTimer += Time.deltaTime;
         if (ArrowTimer > ArrowRate)
         {
-            float angle = Mathf.Atan2(_direction.x, _direction.y) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(_direction.y, _direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.Euler(0, 0, angle);
-            Instantiate(arrow,transform.position, Quaternion.identity);
+            Instantiate(arrow,transform.position, rotation);
             ArrowTimer = 0;
         }
     }
