@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Rigidbody rbEnemy;
+    public Rigidbody2D rbEnemy;
     public SpriteRenderer srEnemySprite;
     public float speed;
     public GameObject player;
@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        rbEnemy = GetComponent<Rigidbody>();
+        rbEnemy = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -30,6 +30,11 @@ public class Enemy : MonoBehaviour
         {
             srEnemySprite.flipX = true;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        rbEnemy.MovePosition(rbEnemy.position + enemyDirection.normalized * speed * Time.deltaTime);
     }
 
 }
